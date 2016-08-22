@@ -1,0 +1,3 @@
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-08-22 13:12:19
+project --topLevelPackage net.springroo.myfirst --projectName "SocialMediaApp" --java 8 --packaging JAR
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-08-22 13:12:20
