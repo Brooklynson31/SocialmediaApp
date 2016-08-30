@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
@@ -36,19 +38,22 @@ public class LoginController implements ApplicationContextAware {
 		
 	loginservice = applicationContext.getBean(LoginService.class);
 	logger.info(loginservice.toString());
+	
 	return "users/login";
 	
 	}
 
 
 	@RequestMapping(value = "login", method = RequestMethod.POST)
-	public String loginPost(@ModelAttribute("users") Users users, ModelMap model, Locale locale,Model mod  ){
+	public String loginPost(@ModelAttribute("users") Users users, ModelMap model, Locale locale,Model mod, HttpServletRequest request  ){
 
 	 Users userfromDB = loginservice.validateUsernamePassword(users);
 	
+	
 	if(userfromDB != null){
-		model.put("fromDB", userfromDB);
-		return "app/home"; 
+		 request.getSession().setAttribute("users", userfromDB);
+		model.addAttribute("users",userfromDB);
+		return "redirect:/app/home.htm"; 
 	}
 	else {
 		model.addAttribute("fail", "Incorrect Login");

@@ -10,9 +10,6 @@
   </definition>
 
 
-<definition name="test" extends="public">
-    <put-attribute name="body" value="/WEB-INF/views/test.jsp" />
-  </definition>
   
 <definition name="users/registration" extends="public">
     <put-attribute name="body" value="/WEB-INF/views/users/registration.jsp" />
