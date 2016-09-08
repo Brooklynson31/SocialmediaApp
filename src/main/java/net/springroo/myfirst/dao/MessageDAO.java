@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import net.springroo.myfirst.domain.Message;
+import net.springroo.myfirst.domain.Users;
 
 @Repository
 @Transactional
@@ -25,6 +26,20 @@ public class MessageDAO {
 		
 		return session.createCriteria(Message.class).list();
 		
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Message> getFriendsMessages(Users user){
+		
+		Session session = (Session) em.getDelegate();
+		
+		user = (Users) session.createCriteria(Users.class).add(Restrictions.idEq(user.getId())).uniqueResult();
+		
+	return session.createCriteria(Message.class)
+				.add(Restrictions.in("user", user.getFriends()))
+				.list();
+		
+	
 	}
 	
 	public Message getMessageByID(Long messageID){

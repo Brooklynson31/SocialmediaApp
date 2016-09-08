@@ -14,33 +14,32 @@
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(function () {
-	$("#addfriendbutton").show();
-		$("#addfriendbutton").click(function() {
-			window.location.href="friend.htm";
+	$("#yesBtn").click( function() {
+		$("#action").val("Yes");
+			$("#searchform").submit();
 		});
+	
 	
 });
 </script>
+
 </head>
 <body>
 
+<form:form commandName="searchform" method="POST">
+<form:input path="searchString" />
+<form:hidden path = "action"/>
+<input type = "submit" id="findFriendbttn" value = "Find Friend"/>
 
-<h1> Home Page</h1>
-Thanks for Logging in : ${user.username}
 
-
-<h2>Share a Message: </h2>
-<form:form commandName="message" method="POST">
-<form:textarea style = "width: 400px; height: 80px;" path="content"/>
-<input type = "submit" id="SubmitBtn" value = "Post a Message"/>
 </form:form>
 
+<c:if test="${!empty searchresult}">
+Would you like to add ${searchresult.username} as a friend?
+ <input type ="button" value="yes" id="yesBtn" />
+</c:if>
 
-<h3>Messages</h3>
 
-<c:forEach items = "${messages}" var = "message">
-${message.content} From: ${message.user.username} <br/>
-</c:forEach>
 
 </body>
 </html>

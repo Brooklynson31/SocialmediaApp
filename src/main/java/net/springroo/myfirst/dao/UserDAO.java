@@ -1,7 +1,5 @@
 package net.springroo.myfirst.dao;
 
-import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -14,32 +12,28 @@ import net.springroo.myfirst.domain.Users;
 
 @Repository
 @Transactional
-public class LoginDAO {
+public class UserDAO {
 	
 	@PersistenceContext
 	EntityManager em;
 	
-	
-	public void createUser(Users user)
-	{
+	public Users getUserbyUsername(String username){
 		Session session = (Session) em.getDelegate();
 		
-		session.save(user);
+		return (Users) session.createCriteria(Users.class).add(Restrictions.eq("username",username)).uniqueResult();
+		
+		
 	}
-	
+	public void addFriend(Users user, Users friend){
+		
+		Session session = (Session) em.getDelegate();
+		
+		user = (Users) session.createCriteria(Users.class).add(Restrictions.idEq(user.getId())).uniqueResult();
+		user.getFriends().add(friend);
+		
+		session.saveOrUpdate(user);
+		
+		
+	}
 
-	
-	public Users getUser(Users user){
-		
-		Session session = (Session) em.getDelegate();
-		
-		
-		Users userFromDB = (Users) session.createCriteria(Users.class)
-				.add(Restrictions.eq("username", user.getUsername()))
-				.add(Restrictions.eq("password", user.getPassword())).uniqueResult();
-		
-		return userFromDB;
-	}
 }
-
-

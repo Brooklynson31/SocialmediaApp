@@ -12,7 +12,7 @@
 <form:form commandName="users" method="POST">
 Username: <form:input path="username" id="username" /><br/><br/>
 Password: <form:password path="password" id="password"/><br/><br/>
-<input type = "submit" id="SubmitBtn" value = "Submit"/>
+<input type = "submit" id="SubmitBtn" value = "Login"/>
 ${fail}
 </form:form>
 </body>

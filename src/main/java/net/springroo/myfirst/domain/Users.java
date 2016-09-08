@@ -2,6 +2,7 @@ package net.springroo.myfirst.domain;
 
 
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -10,7 +11,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -31,14 +34,28 @@ public class Users {
     private String accountTypes;
     private Boolean termsofService;
     private Set<Message> messages;
+    private Set<Users> friends = new HashSet<Users>();	
 
-    @Id
+    	
+    @ManyToMany(cascade={CascadeType.ALL})
+	@JoinTable(name="friend",
+	joinColumns={@JoinColumn(name="id")},
+	inverseJoinColumns={ @JoinColumn(name="friend_id")})
+    public Set<Users> getFriends() {
+		return friends;
+	}
+
+	public void setFriends(Set<Users> friends) {
+		this.friends = friends;
+	}
+
+	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getId() {
         return this.id;
     }
-
-	public void setId(Long id) {
+    
+    public void setId(Long id) {
         this.id = id;
     }
 

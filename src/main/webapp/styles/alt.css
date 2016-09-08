@@ -145,8 +145,8 @@ a.menu, a.menu:link, a.menu:visited {display:block; width:150px; height:25px;}
 /* text styles */
 
 h1,h2,h3 {
-	font-family: Helvetica, sans-serif;
-	color: #7db223;
+    font-family: Helvetica, sans-serif;
+    color: red;
 }
 
 h1 {

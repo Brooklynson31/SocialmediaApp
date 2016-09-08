@@ -23,6 +23,10 @@
     <put-attribute name="body" value="/WEB-INF/views/app/home.jsp" />
   </definition>
   
+  <definition name="app/friend" extends="public">
+    <put-attribute name="body" value="/WEB-INF/views/app/friend.jsp" />
+  </definition>
+  
   <definition name="dataAccessFailure" extends="public">
     <put-attribute name="body" value="/WEB-INF/views/dataAccessFailure.jspx" />
   </definition>
