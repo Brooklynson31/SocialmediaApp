@@ -27,11 +27,9 @@ $(function () {
 <body>
 
 <form:form commandName="searchform" method="POST">
-<form:input path="searchString" />
 <form:hidden path = "action"/>
-<input type = "submit" id="findFriendbttn" value = "Find Friend"/>
-
-
+<form:input path="searchString" />
+<input type = "submit" value = "Find Friend"/>
 </form:form>
 
 <c:if test="${!empty searchresult}">

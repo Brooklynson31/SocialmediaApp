@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -32,11 +33,26 @@ public class Users {
     private String username;
     private String confirmpassword;
     private String accountTypes;
-    private Boolean termsofService;
+  
+
+	private Boolean termsofService;
     private Set<Message> messages;
     private Set<Users> friends = new HashSet<Users>();	
 
-    	
+    private Set<PendingFriendship> pendingFriendship;
+  
+    @OneToMany(mappedBy="friendId")
+    public Set<PendingFriendship> getPendingFriendship() {
+		return pendingFriendship;
+	}
+
+	public void setPendingFriendship(Set<PendingFriendship> pendingFriendship) {
+		this.pendingFriendship = pendingFriendship;
+	}
+
+	
+	
+    
     @ManyToMany(cascade={CascadeType.ALL})
 	@JoinTable(name="friend",
 	joinColumns={@JoinColumn(name="id")},
@@ -58,6 +74,7 @@ public class Users {
     public void setId(Long id) {
         this.id = id;
     }
+ 
 
 	public String getPassword() {
         return this.password;
@@ -82,21 +99,21 @@ public class Users {
 	public void setConfirmpassword(String confirmpassword) {
 		this.confirmpassword = confirmpassword;
 	}
-
 	
-	public Boolean getTermsofService() {
-		return termsofService;
-	}
+		@Column(name="account_types")
+	  public String getAccountTypes() {
+			return accountTypes;
+		}
+	  	@Column(name="termsof_service")
+		public Boolean getTermsofService() {
+			return termsofService;
+		}
+	
 
 	public void setTermsofService(Boolean termsofService) {
 		this.termsofService = termsofService;
 	}
 
-
-
-	public String getAccountTypes() {
-		return accountTypes;
-	}
 
 	public void setAccountTypes(String accountTypes) {
 		this.accountTypes = accountTypes;
@@ -110,6 +127,8 @@ public class Users {
 	public void setMessages(Set<Message> messages) {
 		this.messages = messages;
 	}
+
+	
 
 	
 }

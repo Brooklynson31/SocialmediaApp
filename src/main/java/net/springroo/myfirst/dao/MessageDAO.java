@@ -35,11 +35,15 @@ public class MessageDAO {
 		
 		user = (Users) session.createCriteria(Users.class).add(Restrictions.idEq(user.getId())).uniqueResult();
 		
-	return session.createCriteria(Message.class)
-				.add(Restrictions.in("user", user.getFriends()))
-				.list();
-		
-	
+		if(!user.getFriends().isEmpty())
+		{
+			return session.createCriteria(Message.class)
+					.add(Restrictions.in("user", user.getFriends()))
+					.list();
+		}
+		else{
+			return null;
+		}
 	}
 	
 	public Message getMessageByID(Long messageID){

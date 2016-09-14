@@ -19,6 +19,22 @@ $(function () {
 			window.location.href="friend.htm";
 		});
 	
+		$("input[id^='yesBtn']").click(function() { 
+			var userId = $(this).attr("id");
+			userId= userId.substring(6);
+			$("#pendingFriendshipUserId").val(userId);
+			$("#action").val("acceptFriendRequest");
+			$("#friendshipform").submit();
+		});
+		
+		$("input[id^='noBtn']").click(function() {
+			var userId = $(this).attr("id");
+			userId= userId.substring(5);
+			$("#pendingFriendshipUserId").val(userId);
+			$("#action").val("denyFriendRequest");
+			$("#friendshipform").submit();
+			});
+		
 });
 </script>
 </head>
@@ -41,6 +57,22 @@ Thanks for Logging in : ${user.username}
 <c:forEach items = "${messages}" var = "message">
 ${message.content} From: ${message.user.username} <br/>
 </c:forEach>
+
+<c:if test="${!empty friendships}">
+<h1>Pending Friendships</h1>
+<form:form commandName="friendshipform" method="POST">
+<form:hidden path = "pendingFriendshipUserId"/>
+<form:hidden path = "action"/>
+<c:forEach items = "${friendships}" var = "friendship">
+User: <b>${friendship.userId.username}</b> Wishes to be your friend, Do you accept their request?  
+<input type ="button" value="yes" id="yesBtn${friendship.userId.id}" />
+ <input type ="button" value="no" id="noBtn${friendship.userId.id}" /><br/>
+</c:forEach>
+</form:form>
+</c:if>
+
+
+
 
 </body>
 </html>
