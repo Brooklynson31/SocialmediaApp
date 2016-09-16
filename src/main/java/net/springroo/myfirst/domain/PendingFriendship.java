@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 //import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -33,7 +34,7 @@ public class PendingFriendship {
 		this.id = id;
 	}
 	
-	//@JoinColumn(name="friend_id")
+	@JoinColumn(name="friend_id")
 	@ManyToOne()
 	public Users getFriendId() {
 		return friendId;
@@ -41,8 +42,8 @@ public class PendingFriendship {
 	public void setFriendId(Users friendId) {
 		this.friendId = friendId;
 	}
-	
-	@ManyToOne()
+	@JoinColumn(name="user_id") //cannot resolve table without.
+	@ManyToOne() 
 	public Users getUserId() {
 		return userId;
 	}

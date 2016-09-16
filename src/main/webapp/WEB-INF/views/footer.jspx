@@ -4,34 +4,16 @@
   <jsp:output omit-xml-declaration="yes"/>
 
   <spring:url value="/" var="home"/>
-  <span>
+  <span id = "welcomefooterlink" style ="display: none;">
     <a href="${home}">
       <spring:message code="button_home"/>
     </a>
   </span>
-  <c:if test="${pageContext['request'].userPrincipal != null}">
-    <c:out value=" | "/>
-    <span>
-      <spring:url value="/resources/j_spring_security_logout" var="logout"/>
-      <a href="${logout}">
-        <spring:message code="security_logout"/>
+        
+        <span id ="loginfooterlink" style ="display: none;">
+  		 <a href="${home}/users/login">
+        <spring:message code="button_login"/>
       </a>
     </span>
-  </c:if>
 
-  <span id="language">
-    <c:out value=" | "/>
-    <spring:message code="global_language"/>
-    <c:out value=": "/>
-  <util:language label="English" locale="en"/>
-    </span>
-  <util:theme/>
-
-  <spring:url value="/resources/images/springsource-logo.png" var="logo"/>
-  <spring:message code="global_sponsored" htmlEscape="false" var="sponsored"/>
-  <span>
-    <a href="http://springsource.com" title="${fn:escapeXml(sponsored)}">
-      <img align="right" alt="${fn:escapeXml(sponsored)}" src="${logo}"/>
-    </a>
-  </span>
 </div>

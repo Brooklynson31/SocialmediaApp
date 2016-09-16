@@ -80,7 +80,7 @@ public String registrationPost(@ModelAttribute("users") Users users, ModelMap mo
 	model.put("users", users);
 	loginservice.createUser(users);
 	populateModel(mod);
-		return "users/registration";
+		return "redirect:/users/login.htm";
 }
 
 
@@ -92,14 +92,7 @@ private void populateModel(Model mod) {
 	accountTypes.add("Full");
 	accountTypes.add("Premium");
 	
-	List<String> visitedCountries = new ArrayList<String>();
-	visitedCountries.add("US");
-	visitedCountries.add("RUS");
-	visitedCountries.add("GER");
-	visitedCountries.add("GBR");
-	visitedCountries.add("BRA");
 	
-	mod.addAttribute("mycountries", visitedCountries);
 	mod.addAttribute("myaccountTypes", accountTypes);
 }
 

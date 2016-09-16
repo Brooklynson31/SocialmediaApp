@@ -18,6 +18,9 @@ $(function () {
 		$("#addfriendbutton").click(function() {
 			window.location.href="friend.htm";
 		});
+	$("#welcomefooterlink").show();
+	$("#loginfooterlink").show();
+
 	
 		$("input[id^='yesBtn']").click(function() { 
 			var userId = $(this).attr("id");
@@ -42,17 +45,18 @@ $(function () {
 
 
 <h1> Home Page</h1>
-Thanks for Logging in : ${user.username}
+
+<h2>Thanks for Logging in : ${user.firstName} ${user.lastName} </h2>
 
 
-<h2>Share a Message: </h2>
+<h3>Share a Message: </h3>
 <form:form commandName="message" method="POST">
 <form:textarea style = "width: 400px; height: 80px;" path="content"/>
 <input type = "submit" id="SubmitBtn" value = "Post a Message"/>
 </form:form>
 
 
-<h3>Messages</h3>
+<h4>Messages</h4>
 
 <c:forEach items = "${messages}" var = "message">
 ${message.content} From: ${message.user.username} <br/>

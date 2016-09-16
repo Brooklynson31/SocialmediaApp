@@ -9,6 +9,8 @@
 <script type="text/javascript">
 $(function(){
 
+	$("#welcomefooterlink").show();
+	$("#loginfooterlink").show();
 
 	
 
@@ -47,6 +49,8 @@ $(function(){
 <body>
 <h1>User Registration</h1>
 <form:form commandName="users" method="POST">
+First Name: <form:input path="firstName" id="firstName" /><br/><br/>
+Last Name: <form:input path="lastName" id="lastName" /><br/><br/>
 Username: <form:input path="username" id="username" /><br/><br/>
 Password: <form:password path="password" id="password"/><br/><br/>
 ConfirmPassword: <form:password path="confirmpassword" id="confirmpassword"/><br/><br/>

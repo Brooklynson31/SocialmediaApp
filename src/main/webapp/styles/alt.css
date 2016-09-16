@@ -94,7 +94,11 @@ body {
 	float:left;
 }
 
-#footer a:link {color: #7db223;}
+#footer a:link {
+	
+	    color: red;
+    margin-right: auto;
+    padding-right: 10px;}
 
 .quicklinks {
 	clear:both; 
@@ -180,6 +184,7 @@ h4 {
 a {
 	text-decoration: underline;
 	font-size: 12px;
+	color: red;
 }
 
 a img {
@@ -196,19 +201,19 @@ tr:nth-child(even) {
 }
 
 a:link {
-	color: #7db223;
+	color: red;
 }
 
 a:hover {
-	color: #456314;
+	color: red;
 }
 
 a:active {
-	color: #7db223;
+	color: red;
 }
 
 a:visited {
-	color: #7db223;
+	color:red;
 }
 
 li {

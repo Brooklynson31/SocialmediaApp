@@ -33,8 +33,8 @@ public class Users {
     private String username;
     private String confirmpassword;
     private String accountTypes;
-  
-
+    private String firstName;
+    private String lastName;
 	private Boolean termsofService;
     private Set<Message> messages;
     private Set<Users> friends = new HashSet<Users>();	
@@ -126,6 +126,22 @@ public class Users {
 
 	public void setMessages(Set<Message> messages) {
 		this.messages = messages;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	

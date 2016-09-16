@@ -37,7 +37,6 @@ public class HomeController {
 @RequestMapping(value = "home", method = RequestMethod.GET)	
 String home(ModelMap model, HttpServletRequest request){
 	
-	//List<Message> messages = messagedao.getMessages();
 	
 	Users user = (Users) request.getSession().getAttribute("users");
 	
@@ -122,8 +121,8 @@ String friendPost(@ModelAttribute("searchform") SearchForm searchstring, ModelMa
 			model.put("searchresult", userbyusername);
 
 	 }
+	 
 	
-	//System.out.print(searchstring.getSearchString());
 	
 	return "app/friend";
 }

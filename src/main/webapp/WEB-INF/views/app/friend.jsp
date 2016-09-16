@@ -18,7 +18,9 @@ $(function () {
 		$("#action").val("Yes");
 			$("#searchform").submit();
 		});
-	
+	$("#backtohomepage").click(function() {
+		window.location.href="home.htm";
+	});
 	
 });
 </script>
@@ -29,14 +31,18 @@ $(function () {
 <form:form commandName="searchform" method="POST">
 <form:hidden path = "action"/>
 <form:input path="searchString" />
-<input type = "submit" value = "Find Friend"/>
+Find a Friend by Username: <input type = "submit" value = "Find Friend"/>
 </form:form>
 
 <c:if test="${!empty searchresult}">
 Would you like to add ${searchresult.username} as a friend?
  <input type ="button" value="yes" id="yesBtn" />
 </c:if>
-
+<br/>
+<br/>
+<span id ="backtohomepage">
+  		<input type ="button"  value = "Back To Home Page"/>
+ </span>
 
 
 </body>
